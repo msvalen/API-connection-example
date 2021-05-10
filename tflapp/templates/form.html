@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>API connection example</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+</head>
+<body>  
+    
+    <h1>Tfl accidents</h1>
+    <form action="/year" id="content" method="post">
+        <label for="year">Choose a year:</label>
+        <select name="year" id="year">
+            {% for x in range(2008,2020) | reverse %}
+                <option value='{{x}}'>{{x}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit" value="Submit" id='button'>
+    </form>
+    <div id="loading" style="visibility: hidden;">
+        <p>Getting the data please wait</p>
+        <img src="{{ url_for('static', filename='src/train.gif')}}" alt="Load train">
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            var button = document.getElementById("button");
+            button.addEventListener("click", change);
+        }
+        function change(){
+            document.getElementById("loading").style.visibility = "visible";
+            document.getElementById("content").style.visibility = "hidden";                   
+        }
+    </script>
+   
+</body>
+</html>

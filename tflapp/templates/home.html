@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Webpage</title>
+    <link rel="stylesheet" href="{{ url_for('static', 
+filename='css/styles.css')}}">
+</head>
+<body>
+
+    <h1> Tfl accidents in {{year}}</h1>
+    <table>
+        {% for key,value in x.iterrows() %}
+            <tr>
+                <td><p>{{ value['Vehicles'] }}<p></td>
+                <td>
+                    <div style='background-color:{{ ['silver','lightcoral','salmon','tomato','lightsteelblue','lightgreen','plum','violet','sandybrown','thistle','burlywood','lightsalmon','hotpink','bisque','tan','paleturquoise','palegreen']|random }}; width:{{value["N of accidents"] *700/xmax}}px'>
+                    {{ value['N of accidents'] }}</td>
+            </tr>
+        {% endfor %}
+    {# a comment #}
+    </table>
+   
+</body>
+</html>
